@@ -45,35 +45,35 @@ const SideLeftBer = () => {
           </div>
         </div>
         {/* ------end------- */}
-        <div className="mb-50">
-          <ul className="flex flex-col gap-[5px] font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">
+        <div className="">
+          <ul className="flex flex-col gap-[5px]  ">
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0] ">
               <FaNewspaper className="text-[#AFB0C0] group-hover:text-white text-[20px]" />
-              <span className=" group-hover:text-white">Newsfeed</span>
+              <span className=" group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Newsfeed</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <ProfileIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white">Profile</span>
+              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Profile</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <GroupIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white">Groups</span>
+              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Groups</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <PhotosIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white">Photos</span>
+              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Photos</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <FriendsIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className=" group-hover:text-white">Friends</span>
+              <span className=" group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Friends</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <FriendIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white">Friends Request</span>
+              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Friends Request</span>
             </li>
             <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
               <LogOutIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white">Logout</span>
+              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Logout</span>
             </li>
           </ul>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Container = () => {
   return (
-    <div className='max-w-[1628px]'></div>
+    <div className='max-w-[1185px]'></div>
   )
 }
 

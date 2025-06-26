@@ -9,7 +9,9 @@ import { Link } from "react-router";
 
 const Navber = () => {
   const [isBerOpen, setIsBerOpen] = useState(false);
+  const [isDotOpen, setIsDotOpen] = useState(false);
   const berRef = useRef(null);
+  const dotRef = useRef(null);
 
   useEffect(() => {
     document.addEventListener("mousedown", (event) => {
@@ -18,14 +20,19 @@ const Navber = () => {
       if (berRef.current && !berRef.current.contains(event.target)) {
         setIsBerOpen(false);
       }
+      if (dotRef.current && !dotRef.current.contains(event.target)) {
+        setIsDotOpen(false)
+      }
     });
 
     return () => {
       document.addEventListener("mousedown", (event) => {
-
         if (berRef.current && !berRef.current.contains(event.target)) {
           setIsBerOpen(false);
         }
+        if (dotRef.current && !dotRef.current.contains(event.target)) {
+        setIsDotOpen(false)
+      }
       });
     };
   }, []);
@@ -34,9 +41,12 @@ const Navber = () => {
     setIsBerOpen(!isBerOpen);
     console.log("click");
   };
+  const hendelDotClick = () => {
+    setIsDotOpen(!isDotOpen);
+  };
 
   return (
-    <div>
+    <div className="absolute top-0 left-0 z-10 w-full">
       <div className=" bg-[#615DFA] flex items-center px-[24px] py-[15px] justify-between font-[Poppins]">
         <div className=" w-[90px] h-[40px] mr-[174px]">
           <a className="w-[90px] block" href="/" data-discover="true">
@@ -63,8 +73,15 @@ const Navber = () => {
             <li>
               <Link to={"#"}> FAQ</Link>
             </li>
-            <li>
-              <BsThreeDots />
+            <li className="relative mt-2" ref={dotRef}>
+              <button 
+              className="flex items-start"
+              onClick={hendelDotClick}>
+                <BsThreeDots />
+                {isDotOpen && (
+                  <div className="w-[200px] h-[60px] bg-red-800 absolute top-[42px] left-[-10px] z-10 "></div>
+                )}
+              </button>
             </li>
           </ul>
         </div>
