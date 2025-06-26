@@ -6,11 +6,11 @@ import SideLeftBer from "./SideLeftBer";
 import Container from "../Component/Container";
 
 const Layout = () => {
-  return (
+  return ( 
     <>
   
       <Navber />
-      <div className="flex gap-[30px]">
+      <div className="flex gap-[30px] justify-between">
         <SideLeftBer />
         <Outlet />
         <SideRightBer />
