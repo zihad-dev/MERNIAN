@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import Cart from "../Icon/Cart";
 import SmsLogo from "../Icon/SmsLogo";
 import BelLogo from "../Icon/BelLogo";
 import Setting from "../Icon/Setting";
+import { Link } from "react-router";
 
 const Navber = () => {
+  const [isBerOpen, setIsBerOpen] = useState(false);
+  const berRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      console.log(berRef.current.contains(event.target));
+
+      if (berRef.current && !berRef.current.contains(event.target)) {
+        setIsBerOpen(false);
+      }
+    });
+
+    return () => {
+      document.addEventListener("mousedown", (event) => {
+
+        if (berRef.current && !berRef.current.contains(event.target)) {
+          setIsBerOpen(false);
+        }
+      });
+    };
+  }, []);
+
+  const hendelBerClick = () => {
+    setIsBerOpen(!isBerOpen);
+    console.log("click");
+  };
+
   return (
     <div>
       <div className=" bg-[#615DFA] flex items-center px-[24px] py-[15px] justify-between font-[Poppins]">
@@ -18,12 +46,23 @@ const Navber = () => {
 
         <div className=" ">
           <ul className="flex items-center gap-[48px] font-[Poppins] font-bold text-white text-[14px] cursor-pointer">
-            <li>
-              <FaBars />
+            <li className="relative">
+              <button onClick={hendelBerClick} ref={berRef}>
+                <FaBars />
+                {isBerOpen && (
+                  <div className="z-10 w-[200px] h-[100px] bg-red-900 absolute top-[40px] left-[-10px] "></div>
+                )}
+              </button>
             </li>
-            <li>Careers</li>
-            <li>Store</li>
-            <li>FAQ</li>
+            <li>
+              <Link to={"#"}>Careers</Link>
+            </li>
+            <li>
+              <Link to={"/Store"}> Store</Link>
+            </li>
+            <li>
+              <Link to={"#"}> FAQ</Link>
+            </li>
             <li>
               <BsThreeDots />
             </li>
@@ -38,16 +77,16 @@ const Navber = () => {
             />
           </form>
         </div>
-        <div
-          className="flex items-center gap-[70px] "
-        >
-          <div className="relative 
+        <div className="flex items-center gap-[70px] ">
+          <div
+            className="relative 
   after:content-[''] after:absolute after:w-[1px] after:h-[32px] 
-  after:bg-[#7A77FD] after:top-[-5px] after:right-[-40px]">
+  after:bg-[#7A77FD] after:top-[-5px] after:right-[-40px]"
+          >
             <div className=" relative flex gap-[46px] after:absolute after:content-[''] after:w-full after:h-[3px] after:left-0 after:bottom-[-3px] after:bg-[#4E4AC8] after:rounded-[7px] after:z-0 before:absolute before:content-[''] before:w-[80%] before:h-[3px] before:left-0 before:bottom-[-3px] before:bg-[#41EFFF] before:rounded-[7px] before:z-10 font-normal text-white text-[12px] ">
-            <span>Next</span>
-            <span>35 EXP</span>
-          </div>
+              <span>Next</span>
+              <span>35 EXP</span>
+            </div>
           </div>
           <div className="flex gap-[33px] ">
             <span>
@@ -59,9 +98,11 @@ const Navber = () => {
             <span>
               <BelLogo />
             </span>
-            <div className="ml-[33px] relative 
+            <div
+              className="ml-[33px] relative 
   after:content-[''] after:absolute after:w-[1px] after:h-[32px] 
-  after:bg-[#7A77FD] after:top-[-5px] after:left-[-33px] ">
+  after:bg-[#7A77FD] after:top-[-5px] after:left-[-33px] "
+            >
               <span>
                 <Setting />
               </span>

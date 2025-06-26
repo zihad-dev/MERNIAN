@@ -3,7 +3,6 @@ import Navber from "./Navber";
 import { Outlet } from "react-router";
 import SideRightBer from "./SideRightBer";
 import SideLeftBer from "./SideLeftBer";
-import Container from "../Component/Container";
 
 const Layout = () => {
   return ( 
