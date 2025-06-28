@@ -1,10 +1,13 @@
 import React from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io";
+import HomeLeft from "../Component/HomeLeft";
+import ContentPost from "../Component/ContentPost";
 
 const HomePage = () => {
   return (
-    <div className="mt-8 mb-[33px]">
+    <div>
+      <div className="mt-8 mb-[33px]">
       <div className="relative w-full h-[300px]">
         {/* Banner Image */}
         <img src="images/bnner.png" alt="Banner" className="w-full h-full object-cover rounded-t-xl" />
@@ -58,6 +61,15 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+    </div>
+    <div className="flex gap-[15px] ">
+      <div className="">
+        <HomeLeft/>
+      </div>
+    <div className="">
+      <ContentPost/>
+    </div>
+    </div>
     </div>
   );
 };
