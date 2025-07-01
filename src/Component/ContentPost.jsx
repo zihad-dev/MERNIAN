@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import BelLogo from "../Icon/BelLogo";
 import LikeIcon from "../Icon/LikeIcon";
@@ -9,6 +9,27 @@ import { AiFillLike } from "react-icons/ai";
 import { FaCommentAlt, FaShareAlt } from "react-icons/fa";
 
 const ContentPost = () => {
+  const [ispostDropdwon, SetIspostDropdwon] = useState(false);
+  const postRef = useRef(null);
+
+  useEffect(() => {
+    let hendelClickOutside = (event) => {
+      // console.log(postRef.current && !postRef.current.contains(event.target));
+      if (postRef.current && !postRef.current.contains(event.target)) {
+        SetIspostDropdwon(false);
+      }
+    };
+    document.addEventListener("mousedown", hendelClickOutside);
+
+    return () => {
+      document.addEventListener("mousedown", hendelClickOutside);
+    };
+  }, []);
+
+  const hendelDropdwone = () => {
+    SetIspostDropdwon(!ispostDropdwon);
+  };
+
   return (
     <div>
       <div className="bg-white pt-[15px] pr-[41px] pb-[20px] pl-[20px] rounded-t-[15px] ">
@@ -24,16 +45,31 @@ const ContentPost = () => {
               </p>
             </div>
           </div>
-          <div className="relative">
+          <div onClick={hendelDropdwone} className="relative">
             <BsThreeDots className="text-[#000000] text-[20px] cursor-pointer" />
-            <div 
-            style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)" }}
-            className="w-[140px] h-[80px] bg-white absolute top-[20px] right-0 z-10 rounded-[7px]">
-              
-            </div>
+            {ispostDropdwon && (
+              <div
+                ref={postRef}
+                style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)" }}
+                className="w-[140px] h-auto bg-white absolute top-[20px] right-0 z-10 rounded-[7px] py-4 pl-4"
+              >
+                <ul className="flex flex-col gap-[6px]">
+                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                    Edit Post
+                  </li>
+                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                    Delete Post
+                  </li>
+                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                    Report Post
+                  </li>
+                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                    Report Author
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
-          
-          
         </div>
         <div>
           <p className="font-[Poppins] font-normal text-[12px] text-[#000000] max-w-[524px] relative after:absolute after:bottom-[-29px] after:left-0 after:content-[''] after:w-[100%] after:h-[1px] after:bg-[#D9D9D9] mb-[44px]">
@@ -55,10 +91,16 @@ const ContentPost = () => {
               <div className="-ml-2 z-10">
                 <WowIcon />
               </div>
-              <span className="font-[Inter] font-bold text-[12px] text-[#000000] ml-[13px] ">12</span>
+              <span className="font-[Inter] font-bold text-[12px] text-[#000000] ml-[13px] ">
+                12
+              </span>
             </div>
-            <h5 className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">13 Comments</h5>
-            <span className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">2 Shares</span>
+            <h5 className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">
+              13 Comments
+            </h5>
+            <span className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">
+              2 Shares
+            </span>
           </div>
         </div>
       </div>
@@ -66,15 +108,21 @@ const ContentPost = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 cursor-pointer">
             <AiFillLike className="text-[15px] text-[#D9D9D9]" />
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">Like</span>
+            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
+              Like
+            </span>
           </div>
           <div className="flex items-center gap-4 cursor-pointer">
             <FaCommentAlt className="text-[15px] text-[#D9D9D9]" />
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">Comment</span>
+            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
+              Comment
+            </span>
           </div>
           <div className="flex items-center gap-4 cursor-pointer">
-            <FaShareAlt className="text-[15px] text-[#D9D9D9]"/>
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">Share</span>
+            <FaShareAlt className="text-[15px] text-[#D9D9D9]" />
+            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
+              Share
+            </span>
           </div>
         </div>
       </div>
