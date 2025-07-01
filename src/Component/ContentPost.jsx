@@ -104,7 +104,7 @@ const ContentPost = () => {
           </div>
         </div>
       </div>
-      <div className="w-[100%] bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9]">
+      <div className="w-[100%] bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] relative">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 cursor-pointer">
             <AiFillLike className="text-[15px] text-[#D9D9D9]" />
@@ -125,6 +125,9 @@ const ContentPost = () => {
             </span>
           </div>
         </div>
+        <div 
+        style={{boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)"}}
+        className="absolute left-0 top-[-82px] rounded-[50px] w-[410px] h-[40px] bg-red-500"></div>
       </div>
     </div>
   );
