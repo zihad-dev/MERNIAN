@@ -1,28 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
-import BelLogo from "../Icon/BelLogo";
 import LikeIcon from "../Icon/LikeIcon";
 import LoveIcon from "../Icon/LoveIcon";
 import Sad from "../Icon/Sad";
 import WowIcon from "../Icon/WowIcon";
 import { AiFillLike } from "react-icons/ai";
 import { FaCommentAlt, FaShareAlt } from "react-icons/fa";
+import DisLike from "../Icon/DisLike";
+import Happy from "../Icon/Happy";
+import Funny from "../Icon/Funny";
+import Angry from "../Icon/Angry";
 
 const ContentPost = () => {
   const [ispostDropdwon, SetIspostDropdwon] = useState(false);
+  const [isReact, setIsReact] = useState(false);
+  const [selectedReaction, setSelectedReaction] = useState(null);
   const postRef = useRef(null);
+  const reactRef = useRef(null);
 
   useEffect(() => {
-    let hendelClickOutside = (event) => {
-      // console.log(postRef.current && !postRef.current.contains(event.target));
+    const hendelClickOutside = (event) => {
       if (postRef.current && !postRef.current.contains(event.target)) {
         SetIspostDropdwon(false);
+      }
+      if (reactRef.current && !reactRef.current.contains(event.target)) {
+        setIsReact(false);
       }
     };
     document.addEventListener("mousedown", hendelClickOutside);
 
     return () => {
-      document.addEventListener("mousedown", hendelClickOutside);
+      document.removeEventListener("mousedown", hendelClickOutside);
     };
   }, []);
 
@@ -30,10 +38,30 @@ const ContentPost = () => {
     SetIspostDropdwon(!ispostDropdwon);
   };
 
+  const hendelReact = () => {
+    setIsReact(!isReact);
+  };
+
+  const handleReaction = (type) => {
+    setSelectedReaction(type);
+    setIsReact(false);
+  };
+
+  const reactionIcons = {
+    like: <LikeIcon width={20} height={20} />,
+    love: <LoveIcon width={20} height={20} />,
+    dislike: <DisLike width={20} height={20} />,
+    happy: <Happy width={20} height={20} />,
+    funny: <Funny width={20} height={20} />,
+    wow: <WowIcon width={20} height={20} />,
+    angry: <Angry width={20} height={20} />,
+    sad: <Sad width={20} height={20} />,
+  };
+
   return (
     <div>
-      <div className="bg-white pt-[15px] pr-[41px] pb-[20px] pl-[20px] rounded-t-[15px] ">
-        <div className="flex items-center justify-between mb-[23px] ">
+      <div className="bg-white pt-[15px] pr-[41px] pb-[20px] pl-[20px] rounded-t-[15px]">
+        <div className="flex items-center justify-between mb-[23px]">
           <div className="flex items-center gap-[15px]">
             <div className="w-[50px] h-[50px] rounded-full bg-[#615DFA] border-3 border-[#D9D9D9]"></div>
             <div>
@@ -54,16 +82,16 @@ const ContentPost = () => {
                 className="w-[140px] h-auto bg-white absolute top-[20px] right-0 z-10 rounded-[7px] py-4 pl-4"
               >
                 <ul className="flex flex-col gap-[6px]">
-                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
                     Edit Post
                   </li>
-                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
                     Delete Post
                   </li>
-                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
                     Report Post
                   </li>
-                  <li className="cursor-pointer font-[Poppins] font-normal text-[12px] text-[#000000] hover:font-semibold transition-all duration-300">
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
                     Report Author
                   </li>
                 </ul>
@@ -71,63 +99,145 @@ const ContentPost = () => {
             )}
           </div>
         </div>
-        <div>
-          <p className="font-[Poppins] font-normal text-[12px] text-[#000000] max-w-[524px] relative after:absolute after:bottom-[-29px] after:left-0 after:content-[''] after:w-[100%] after:h-[1px] after:bg-[#D9D9D9] mb-[44px]">
-            I have great news to share with you all! I’ve been officially made a
-            game streaming verified partner by Streamy http://lyt.ly/snej25.
-            What does this mean? I’ll be uploading new content every day,
-            improving the quality and I’m gonna have access to games a month
-            before the official release. This is a dream come true, thanks to
-            all for the support!!!
-          </p>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center relative">
-              <div className="z-30">
-                <LikeIcon />
-              </div>
-              <div className="-ml-2 z-20">
-                <LoveIcon />
-              </div>
-              <div className="-ml-2 z-10">
-                <WowIcon />
-              </div>
-              <span className="font-[Inter] font-bold text-[12px] text-[#000000] ml-[13px] ">
-                12
-              </span>
+
+        <p className="font-[Poppins] text-[12px] text-[#000000] max-w-[524px] relative after:absolute after:bottom-[-29px] after:left-0 after:content-[''] after:w-[100%] after:h-[1px] after:bg-[#D9D9D9] mb-[44px]">
+          I have great news to share with you all! I’ve been officially made a
+          game streaming verified partner by Streamy http://lyt.ly/snej25. I’ll
+          be uploading new content every day, improving the quality and have
+          access to games a month before official release.
+        </p>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center relative">
+            <div className="z-1">
+              <LikeIcon />
             </div>
-            <h5 className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">
-              13 Comments
-            </h5>
-            <span className="font-['Inter'] font-bold text-[12px] text-[#000000] cursor-pointer">
-              2 Shares
+            <div className="-ml-2 z-1">
+              <LoveIcon />
+            </div>
+            <div className="-ml-2 z-1">
+              <WowIcon />
+            </div>
+            <span className="font-[Inter] font-bold text-[12px] text-[#000000] ml-[13px]">
+              12
             </span>
           </div>
+          <h5 className="font-bold text-[12px] text-[#000000] cursor-pointer">
+            13 Comments
+          </h5>
+          <span className="font-bold text-[12px] text-[#000000] cursor-pointer">
+            2 Shares
+          </span>
         </div>
       </div>
-      <div className="w-[100%] bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] relative">
+
+      <div className="w-full bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] relative">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 cursor-pointer">
-            <AiFillLike className="text-[15px] text-[#D9D9D9]" />
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
-              Like
-            </span>
+       
+          <div ref={reactRef} className="relative">
+            <div
+              onClick={hendelReact}
+              className="flex items-center gap-4 cursor-pointer"
+            >
+              {selectedReaction ? (
+                <div>{reactionIcons[selectedReaction]}</div>
+              ) : (
+                <AiFillLike className="text-[15px] text-[#D9D9D9]" />
+              )}
+              <span className="font-bold text-[#D9D9D9] text-[12px]">
+                {selectedReaction
+                  ? selectedReaction.charAt(0).toUpperCase() +
+                    selectedReaction.slice(1)
+                  : "Like"}
+              </span>
+            </div>
+
+            {/* Dropdown */}
+            {isReact && (
+              <div
+                style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)" }}
+                className="absolute left-0 top-[-110px] rounded-[50px] bg-white pt-3 pr-[14px] pb-[11px] pl-[13px] z-20"
+              >
+                <div className="flex items-center gap-[12px]">
+                  <div onClick={() => handleReaction("like")}>
+                    <LikeIcon
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+                  </div>
+                  <div onClick={() => handleReaction("love")}>
+                    <LoveIcon
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+                  </div>
+                  <div onClick={() => handleReaction("dislike")}>
+                    <DisLike
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+                  </div>
+                  <div onClick={() => handleReaction("happy")}>
+                    <Happy width={40} height={40} className="cursor-pointer" />
+                  </div>
+                  <div onClick={() => handleReaction("funny")}>
+                    <Funny width={40} height={40} className="cursor-pointer" />
+                  </div>
+                  <div onClick={() => handleReaction("wow")}>
+                    <WowIcon
+                      width={40}
+                      height={40}
+                      className="cursor-pointer"
+                    />
+                  </div>
+                  <div onClick={() => handleReaction("angry")}>
+                    <Angry width={40} height={40} className="cursor-pointer" />
+                  </div>
+                  <div onClick={() => handleReaction("sad")}>
+                    <Sad width={40} height={40} className="cursor-pointer" />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* Comment Button */}
           <div className="flex items-center gap-4 cursor-pointer">
             <FaCommentAlt className="text-[15px] text-[#D9D9D9]" />
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
+            <span className="font-bold text-[#D9D9D9] text-[12px]">
               Comment
             </span>
           </div>
+
+          {/* Share Button */}
           <div className="flex items-center gap-4 cursor-pointer">
             <FaShareAlt className="text-[15px] text-[#D9D9D9]" />
-            <span className="font-[Inter] font-bold text-[#D9D9D9] text-[12px]">
-              Share
-            </span>
+            <span className="font-bold text-[#D9D9D9] text-[12px]">Share</span>
           </div>
         </div>
-        <div 
-        style={{boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)"}}
-        className="absolute left-0 top-[-82px] rounded-[50px] w-[410px] h-[40px] bg-red-500"></div>
+      </div>
+      <div className="w-full h-auto bg-[#FCFCFD] border-t border-[#D9D9D9] pt-[13px] pb-[18px]">
+        <div className="ml-[26px] flex  gap-[11px] ">
+          <div className="bg-[#615DFA] w-[38px] h-[38px] rounded-full border-2 border-[#D9D9D9] "></div>
+          <div>
+          <p className="max-w-[475px] font-[Poppins] font-normal text-[12px] text-[#3E3F5E] mb-[15px]">  <strong className="font-medium">Sohel rana</strong>  It’s a always pleasure to do this streams with you. If we have at least half half the fun than last time it will be an incredible success!</p>
+          <div className="flex items-center gap-[25px]">
+          <div className="font-[Poppins] font-medium text-[12px] text-[#000000] cursor-pointer">1</div>
+          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">React!</h3>
+          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">Reply</h3>
+          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">15 minutes ago</h3>
+          <span className="font-[Poppins] font-normal text-[15px] text-[#000000] cursor-pointer">
+            <BsThreeDots />
+            </span>
+          
+        </div>
+          </div>
+
+        </div>
+        
       </div>
     </div>
   );

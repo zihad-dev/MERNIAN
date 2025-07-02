@@ -1,11 +1,11 @@
 import React from "react";
 
-const BelLogo = () => {
+const BelLogo = (width=20,height=20,className="") => {
   return (
-    <div>
+    <div className={className}>
       <svg
-        width="19"
-        height="18"
+        width={width}
+        height={height}
         viewBox="0 0 19 18"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
