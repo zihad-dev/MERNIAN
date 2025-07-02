@@ -1,11 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BsThreeDots } from "react-icons/bs";
-import { FaBars } from "react-icons/fa";
+import {
+  BsFillCalendarEventFill,
+  BsFillCameraReelsFill,
+  BsShop,
+  BsThreeDots,
+} from "react-icons/bs";
+import { FaBars, FaUserFriends } from "react-icons/fa";
 import Cart from "../Icon/Cart";
 import SmsLogo from "../Icon/SmsLogo";
 import BelLogo from "../Icon/BelLogo";
 import Setting from "../Icon/Setting";
 import { Link } from "react-router";
+import { RiCalendarEventFill } from "react-icons/ri";
+import { GrGroup } from "react-icons/gr";
+import { MdPageview } from "react-icons/md";
 
 const Navber = () => {
   const [isBerOpen, setIsBerOpen] = useState(false);
@@ -21,7 +29,7 @@ const Navber = () => {
         setIsBerOpen(false);
       }
       if (dotRef.current && !dotRef.current.contains(event.target)) {
-        setIsDotOpen(false)
+        setIsDotOpen(false);
       }
     });
 
@@ -31,8 +39,8 @@ const Navber = () => {
           setIsBerOpen(false);
         }
         if (dotRef.current && !dotRef.current.contains(event.target)) {
-        setIsDotOpen(false)
-      }
+          setIsDotOpen(false);
+        }
       });
     };
   }, []);
@@ -59,11 +67,82 @@ const Navber = () => {
             <li className="relative">
               <button onClick={hendelBerClick} ref={berRef}>
                 <FaBars />
-                {isBerOpen && (
-                  <div className="z-10 w-[200px] h-[100px] bg-red-900 absolute top-[40px] left-[-10px] "></div>
-                )}
               </button>
+
+              {isBerOpen && (
+                <div className="z-10 w-[300px] h-auto bg-[#FCFCFD] absolute top-[40px] left-[-10px] shadow-xs rounded-[10px] p-4">
+                  <ul className="flex flex-col gap-2">
+                    <li className=" flex  gap-4">
+                      <RiCalendarEventFill className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Events
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Lorem ipsum dolor sit amet..
+                        </p>
+                      </div>
+                    </li>
+                    <li className=" flex gap-4">
+                      <FaUserFriends className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Friend
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Dolor lorem ipsum sit amet
+                        </p>
+                      </div>
+                    </li>
+                    <li className=" flex gap-4">
+                      <GrGroup className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Group
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Ipsum dolor sit amet.
+                        </p>
+                      </div>
+                    </li>
+                    <li className=" flex gap-4">
+                      <MdPageview className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Pages
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Lorem dolor amet adipisicing
+                        </p>
+                      </div>
+                    </li>
+                    <li className=" flex gap-4">
+                      <BsFillCameraReelsFill className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Reels
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Lorem ipsum dolor sit
+                        </p>
+                      </div>
+                    </li>
+                    <li className=" flex gap-4">
+                      <BsShop className="text-[20px] text-[#615DFA] " />
+                      <div>
+                        <h3 className="font-[Poppins] font-medium text-[12px] text-[#000000]">
+                          Marketplase
+                        </h3>
+                        <p className="font-[Inter] font-normal text-[12px] text-[#D9D9D9]">
+                          Lorem ipsum dolor sit amet consectetur
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </li>
+
             <li>
               <Link to={"#"}>Careers</Link>
             </li>
@@ -74,12 +153,25 @@ const Navber = () => {
               <Link to={"#"}> FAQ</Link>
             </li>
             <li className="relative mt-2" ref={dotRef}>
-              <button 
-              className="flex items-start"
-              onClick={hendelDotClick}>
+              <button className="flex " onClick={hendelDotClick}>
                 <BsThreeDots />
                 {isDotOpen && (
-                  <div className="w-[200px] h-[60px] bg-red-800 absolute top-[42px] left-[-10px] z-10 "></div>
+                  <div className="z-10 w-[200px] h-auto bg-[#FCFCFD] absolute top-[30px] right-[0] shadow-xs rounded-[10px] p-4">
+                    <ul className="flex flex-col gap-3 items-start">
+                      <li className="font-[Poppins] font-normal text-[14px] text-[#000000] hover:font-medium cursor-pointer duration-300 ">
+                        Settings & privacy
+                      </li>
+                      <li className="font-[Poppins] font-normal text-[14px] text-[#000000] hover:font-medium cursor-pointer duration-300 ">
+                        Display & accessibility
+                      </li>
+                      <li className="font-[Poppins] font-normal text-[14px] text-[#000000] hover:font-medium cursor-pointer duration-300 ">
+                        Give feedback
+                      </li>
+                      <li className="font-[Poppins] font-normal text-[14px] text-[#000000] hover:font-medium cursor-pointer duration-300 ">
+                        Log out
+                      </li>
+                    </ul>
+                  </div>
                 )}
               </button>
             </li>
