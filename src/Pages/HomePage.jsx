@@ -66,7 +66,12 @@ const HomePage = () => {
       <div className="">
         <HomeLeft/>
       </div>
-    <div className="">
+    <div className="flex flex-col gap-[26px]">
+      <ContentPost/>
+      <ContentPost/>
+      <ContentPost/>
+      <ContentPost/>
+      <ContentPost/>
       <ContentPost/>
     </div>
     </div>

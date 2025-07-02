@@ -15,8 +15,11 @@ const ContentPost = () => {
   const [ispostDropdwon, SetIspostDropdwon] = useState(false);
   const [isReact, setIsReact] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState(null);
+  const [isComment,setIsComment]=useState(false)
+  const [isComBer,setIsComBer]=useState(false)
   const postRef = useRef(null);
   const reactRef = useRef(null);
+  const comBerRef =useRef(null)
 
   useEffect(() => {
     const hendelClickOutside = (event) => {
@@ -25,6 +28,9 @@ const ContentPost = () => {
       }
       if (reactRef.current && !reactRef.current.contains(event.target)) {
         setIsReact(false);
+      }
+      if (comBerRef.current && !comBerRef.current.contains(event.target)) {
+        setIsComBer(false)
       }
     };
     document.addEventListener("mousedown", hendelClickOutside);
@@ -46,6 +52,12 @@ const ContentPost = () => {
     setSelectedReaction(type);
     setIsReact(false);
   };
+  const hendelComBer =()=>{
+    setIsComBer(!isComBer)
+  }
+  const hendelComment=()=>{
+    setIsComment(!isComment)
+  }
 
   const reactionIcons = {
     like: <LikeIcon width={20} height={20} />,
@@ -205,7 +217,9 @@ const ContentPost = () => {
           </div>
 
           {/* Comment Button */}
-          <div className="flex items-center gap-4 cursor-pointer">
+          <div
+          onClick={hendelComment}
+           className="flex items-center gap-4 cursor-pointer">
             <FaCommentAlt className="text-[15px] text-[#D9D9D9]" />
             <span className="font-bold text-[#D9D9D9] text-[12px]">
               Comment
@@ -219,7 +233,9 @@ const ContentPost = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-auto bg-[#FCFCFD] border-t border-[#D9D9D9] pt-[13px] pb-[18px]">
+     {
+      isComment && (
+         <div className="w-full h-auto bg-[#FCFCFD] border-t border-[#D9D9D9] pt-[13px] pb-[18px]">
         <div className="ml-[26px] flex  gap-[11px] ">
           <div className="bg-[#615DFA] w-[38px] h-[38px] rounded-full border-2 border-[#D9D9D9] "></div>
           <div>
@@ -229,8 +245,33 @@ const ContentPost = () => {
           <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">React!</h3>
           <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">Reply</h3>
           <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">15 minutes ago</h3>
-          <span className="font-[Poppins] font-normal text-[15px] text-[#000000] cursor-pointer">
+          <span 
+          onClick={hendelComBer}
+          ref={comBerRef}
+          className="font-[Poppins] font-normal text-[15px] text-[#000000] cursor-pointer relative">
             <BsThreeDots />
+            {
+            isComBer &&(
+              <div 
+            style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)" }}
+            className="absolute w-[140px] h-auto  bottom-[20px] left-0 bg-white w-[100px] h-[100px] z-10 rounded-[7px] py-4 pl-4">
+               <ul className="flex flex-col gap-[6px]">
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
+                    Edit Post
+                  </li>
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
+                    Delete Post
+                  </li>
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
+                    Report Post
+                  </li>
+                  <li className="cursor-pointer text-[12px] hover:font-semibold">
+                    Report Author
+                  </li>
+                </ul>
+            </div>
+            )
+            }
             </span>
           
         </div>
@@ -239,6 +280,8 @@ const ContentPost = () => {
         </div>
         
       </div>
+      )
+     }
     </div>
   );
 };
