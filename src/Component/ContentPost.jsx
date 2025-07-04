@@ -10,16 +10,16 @@ import DisLike from "../Icon/DisLike";
 import Happy from "../Icon/Happy";
 import Funny from "../Icon/Funny";
 import Angry from "../Icon/Angry";
+import Comment from "./Comment";
 
 const ContentPost = () => {
   const [ispostDropdwon, SetIspostDropdwon] = useState(false);
   const [isReact, setIsReact] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState(null);
-  const [isComment,setIsComment]=useState(false)
-  const [isComBer,setIsComBer]=useState(false)
+  const [isComment, setIsComment] = useState(false);
+  const [moreComment, setMoreComment] = useState(false);
   const postRef = useRef(null);
   const reactRef = useRef(null);
-  const comBerRef =useRef(null)
 
   useEffect(() => {
     const hendelClickOutside = (event) => {
@@ -28,9 +28,6 @@ const ContentPost = () => {
       }
       if (reactRef.current && !reactRef.current.contains(event.target)) {
         setIsReact(false);
-      }
-      if (comBerRef.current && !comBerRef.current.contains(event.target)) {
-        setIsComBer(false)
       }
     };
     document.addEventListener("mousedown", hendelClickOutside);
@@ -52,13 +49,13 @@ const ContentPost = () => {
     setSelectedReaction(type);
     setIsReact(false);
   };
-  const hendelComBer =()=>{
-    setIsComBer(!isComBer)
-  }
-  const hendelComment=()=>{
-    setIsComment(!isComment)
-  }
 
+  const hendelComment = () => {
+    setIsComment(!isComment);
+  };
+  const hendelMoreComment = () => {
+    setMoreComment(!moreComment);
+  };
   const reactionIcons = {
     like: <LikeIcon width={20} height={20} />,
     love: <LoveIcon width={20} height={20} />,
@@ -143,9 +140,8 @@ const ContentPost = () => {
         </div>
       </div>
 
-      <div className="w-full bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] relative">
+      <div className="w-full bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] border-b border-[#D9D9D9] relative">
         <div className="flex items-center justify-between">
-       
           <div ref={reactRef} className="relative">
             <div
               onClick={hendelReact}
@@ -215,11 +211,11 @@ const ContentPost = () => {
               </div>
             )}
           </div>
-
           {/* Comment Button */}
           <div
-          onClick={hendelComment}
-           className="flex items-center gap-4 cursor-pointer">
+            onClick={hendelComment}
+            className="flex items-center gap-4 cursor-pointer"
+          >
             <FaCommentAlt className="text-[15px] text-[#D9D9D9]" />
             <span className="font-bold text-[#D9D9D9] text-[12px]">
               Comment
@@ -233,55 +229,36 @@ const ContentPost = () => {
           </div>
         </div>
       </div>
-     {
-      isComment && (
-         <div className="w-full h-auto bg-[#FCFCFD] border-t border-[#D9D9D9] pt-[13px] pb-[18px]">
-        <div className="ml-[26px] flex  gap-[11px] ">
-          <div className="bg-[#615DFA] w-[38px] h-[38px] rounded-full border-2 border-[#D9D9D9] "></div>
-          <div>
-          <p className="max-w-[475px] font-[Poppins] font-normal text-[12px] text-[#3E3F5E] mb-[15px]">  <strong className="font-medium">Sohel rana</strong>  It’s a always pleasure to do this streams with you. If we have at least half half the fun than last time it will be an incredible success!</p>
-          <div className="flex items-center gap-[25px]">
-          <div className="font-[Poppins] font-medium text-[12px] text-[#000000] cursor-pointer">1</div>
-          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">React!</h3>
-          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">Reply</h3>
-          <h3 className="font-[Poppins] font-medium text-[12px] text-[#AFB0C0] cursor-pointer">15 minutes ago</h3>
-          <span 
-          onClick={hendelComBer}
-          ref={comBerRef}
-          className="font-[Poppins] font-normal text-[15px] text-[#000000] cursor-pointer relative">
-            <BsThreeDots />
-            {
-            isComBer &&(
-              <div 
-            style={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.11)" }}
-            className="absolute w-[140px] h-auto  bottom-[20px] left-0 bg-white w-[100px] h-[100px] z-10 rounded-[7px] py-4 pl-4">
-               <ul className="flex flex-col gap-[6px]">
-                  <li className="cursor-pointer text-[12px] hover:font-semibold">
-                    Edit Post
-                  </li>
-                  <li className="cursor-pointer text-[12px] hover:font-semibold">
-                    Delete Post
-                  </li>
-                  <li className="cursor-pointer text-[12px] hover:font-semibold">
-                    Report Post
-                  </li>
-                  <li className="cursor-pointer text-[12px] hover:font-semibold">
-                    Report Author
-                  </li>
-                </ul>
+      {isComment && (
+        <>
+          <Comment />
+          {moreComment && <Comment />}
+       <div>
+           <div className="w-full bg-[#FCFCFD] pt-[16px] pb-[16px]  border-t border-[#D9D9D9] border-b border-[#D9D9D9]  ">
+            <div
+              onClick={hendelMoreComment}
+              className="text-center cursor-pointer font-[Poppins] font-normal text-[12px] text-[#3E3F5E] flex itwms-center gap-1 justify-center hover:underline hover:text-[#01C7D9] transition-all duration-300"
+            >
+              Load more comments
+              <span className="font-[Poppins] font-medium text-[#01C7D9] text-[12px] ">9+</span>
             </div>
-            )
-            }
-            </span>
-          
-        </div>
+           
           </div>
-
-        </div>
-        
-      </div>
-      )
-     }
+           <div className="w-full bg-[#FCFCFD] py-[18px] pl-[25px] pr-[27px] rounded-b-[15px]
+           flex items-center gap-[19px]">
+           <div className="w-[36px] h-[36px] rounded-full bg-[#615DFA] border-2 border-[#D9D9D9]"></div>
+           <div>
+              <input
+                type="text"
+                placeholder="Your reply "
+                className="w-[476px] p-[15px] bg-white rounded-[13px] px-3 text-[14px] text-[#000000] focus:outline-none border border-[#D9D9D9] focus:border-[#615DFA] transition-all duration-300 font-[Poppins] font-semibold text-[12px] text-[#D9D9D9]"
+              />
+           </div>
+          </div>
+       </div>
+          
+        </>
+      )}
     </div>
   );
 };
