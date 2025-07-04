@@ -12,7 +12,7 @@ import Funny from "../Icon/Funny";
 import Angry from "../Icon/Angry";
 import Comment from "./Comment";
 
-const ContentPost = () => {
+const ContentPost = ({ videoContent }) => {
   const [ispostDropdwon, SetIspostDropdwon] = useState(false);
   const [isReact, setIsReact] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState(null);
@@ -108,15 +108,20 @@ const ContentPost = () => {
             )}
           </div>
         </div>
+        <div className="flex flex-col gap-[15px] mb-[29px]">
+          <p className="font-[Poppins] text-[12px] text-[#000000] max-w-[524px] relative ">
+            I have great news to share with you all! I’ve been officially made a
+            game streaming verified partner by Streamy http://lyt.ly/snej25.
+            I’ll be uploading new content every day, improving the quality and
+            have access to games a month before official release.
+          </p>
 
-        <p className="font-[Poppins] text-[12px] text-[#000000] max-w-[524px] relative after:absolute after:bottom-[-29px] after:left-0 after:content-[''] after:w-[100%] after:h-[1px] after:bg-[#D9D9D9] mb-[44px]">
-          I have great news to share with you all! I’ve been officially made a
-          game streaming verified partner by Streamy http://lyt.ly/snej25. I’ll
-          be uploading new content every day, improving the quality and have
-          access to games a month before official release.
-        </p>
+          {videoContent && (
+            <div className="w-full h-[300px] bg-red-500 mb-[23px] rounded-[15px] relative"></div>
+          )}
+        </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between border-t border-[#D9D9D9]  pt-[15px]">
           <div className="flex items-center relative">
             <div className="z-1">
               <LikeIcon />
@@ -140,7 +145,7 @@ const ContentPost = () => {
         </div>
       </div>
 
-      <div className="w-full bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9] border-b border-[#D9D9D9] relative">
+      <div className="w-full bg-[#FCFCFD] pt-[23px] pr-[41px] pb-[20px] pl-[20px] border-t border-[#D9D9D9]  relative">
         <div className="flex items-center justify-between">
           <div ref={reactRef} className="relative">
             <div
@@ -233,30 +238,32 @@ const ContentPost = () => {
         <>
           <Comment />
           {moreComment && <Comment />}
-       <div>
-           <div className="w-full bg-[#FCFCFD] pt-[16px] pb-[16px]  border-t border-[#D9D9D9] border-b border-[#D9D9D9]  ">
-            <div
-              onClick={hendelMoreComment}
-              className="text-center cursor-pointer font-[Poppins] font-normal text-[12px] text-[#3E3F5E] flex itwms-center gap-1 justify-center hover:underline hover:text-[#01C7D9] transition-all duration-300"
-            >
-              Load more comments
-              <span className="font-[Poppins] font-medium text-[#01C7D9] text-[12px] ">9+</span>
+          <div>
+            <div className="w-full bg-[#FCFCFD] pt-[16px] pb-[16px]  border-t border-[#D9D9D9] border-b border-[#D9D9D9]  ">
+              <div
+                onClick={hendelMoreComment}
+                className="text-center cursor-pointer font-[Poppins] font-normal text-[12px] text-[#3E3F5E] flex itwms-center gap-1 justify-center hover:underline hover:text-[#01C7D9] transition-all duration-300"
+              >
+                Load more comments
+                <span className="font-[Poppins] font-medium text-[#01C7D9] text-[12px] ">
+                  {moreComment ? "" : "2+"}
+                </span>
+              </div>
             </div>
-           
+            <div
+              className="w-full bg-[#FCFCFD] py-[18px] pl-[25px] pr-[27px] rounded-b-[15px]
+           flex items-center gap-[19px]"
+            >
+              <div className="w-[36px] h-[36px] rounded-full bg-[#615DFA] border-2 border-[#D9D9D9]"></div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your reply "
+                  className="w-[476px] p-[15px] bg-white rounded-[13px] px-3 text-[14px] text-[#000000] focus:outline-none border border-[#D9D9D9] focus:border-[#615DFA] transition-all duration-300 font-[Poppins] font-semibold text-[12px] text-[#D9D9D9]"
+                />
+              </div>
+            </div>
           </div>
-           <div className="w-full bg-[#FCFCFD] py-[18px] pl-[25px] pr-[27px] rounded-b-[15px]
-           flex items-center gap-[19px]">
-           <div className="w-[36px] h-[36px] rounded-full bg-[#615DFA] border-2 border-[#D9D9D9]"></div>
-           <div>
-              <input
-                type="text"
-                placeholder="Your reply "
-                className="w-[476px] p-[15px] bg-white rounded-[13px] px-3 text-[14px] text-[#000000] focus:outline-none border border-[#D9D9D9] focus:border-[#615DFA] transition-all duration-300 font-[Poppins] font-semibold text-[12px] text-[#D9D9D9]"
-              />
-           </div>
-          </div>
-       </div>
-          
         </>
       )}
     </div>

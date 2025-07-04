@@ -67,12 +67,9 @@ const HomePage = () => {
         <HomeLeft/>
       </div>
     <div className="flex flex-col gap-[26px]">
-      <ContentPost/>
-      <ContentPost/>
-      <ContentPost/>
-      <ContentPost/>
-      <ContentPost/>
-      <ContentPost/>
+      <ContentPost  videoContent={false}/>
+      <ContentPost  videoContent={true}/>
+     
     </div>
     </div>
     </div>

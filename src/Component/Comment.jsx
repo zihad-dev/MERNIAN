@@ -92,7 +92,7 @@ const commentReaction = (type) => {
   };
   return (
     <div>
-      <div className="w-full h-auto bg-[#FCFCFD] pt-[13px] pb-[18px]">
+      <div className="w-full h-auto bg-[#FCFCFD] pt-[13px] pb-[18px] border-t border-[#D9D9D9]">
         <div className="ml-[26px] flex  gap-[11px] ">
           <div className="bg-[#615DFA] w-[38px] h-[38px] rounded-full border-2 border-[#D9D9D9] "></div>
           <div>
