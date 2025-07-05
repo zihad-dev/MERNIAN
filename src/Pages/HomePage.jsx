@@ -67,8 +67,12 @@ const HomePage = () => {
         <HomeLeft/>
       </div>
     <div className="flex flex-col gap-[26px]">
-      <ContentPost  videoContent={false}/>
-      <ContentPost  videoContent={true}/>
+      {/* <ContentPost  videoContent={false}/> */}
+      <ContentPost />
+      <ContentPost  videoContent={true} Participants={true} />
+      <ContentPost  photos={true} Participants={true}/>
+      <ContentPost  videoContent={true} Participants={true}/>
+      <ContentPost />
      
     </div>
     </div>

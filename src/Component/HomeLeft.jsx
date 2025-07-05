@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import VideoPlay from "../Icon/VideoPlay";
+import VideoPlayBox from "./VideoPlayBox";
 
 const HomeLeft = () => {
   const [isAbout, setIsAbout] = useState(false);
   const [isPhotos, setIsPhotos] = useState(false);
   const [isVideo, setIsVideo] = useState(false);
-  const [IsVideoBox, setIsVideoBox]=useState(false)
+  const [IsVideoBox, setIsVideoBox] = useState(false);
+  const [activeVideoSrc, setActiveVideoSrc] = useState(null);
   const aboutRef = useRef(null);
   const PhotosRef = useRef(null);
   const videoRef = useRef(null);
@@ -54,7 +56,7 @@ const HomeLeft = () => {
     setIsVideo(!isVideo);
   };
   const hendelVideoBox = () => {
-    setIsVideoBox(!IsVideoBox)
+    setIsVideoBox(!IsVideoBox);
   };
   return (
     <div className="flex flex-col gap-[15px]">
@@ -253,69 +255,36 @@ const HomeLeft = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-          <div
-        onClick={hendelVideoBox}
-         className="">
-          <div className="w-[215px] h-[100px] bg-[#615DFA] rounded-[15px] flex items-center justify-center">
-            <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
-              <VideoPlay />
+          <div onClick={() => setActiveVideoSrc("videos/simple.mp4")}>
+            <div className="w-[215px] h-[100px] bg-[#615DFA] rounded-[15px] flex items-center justify-center">
+              <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
+                <VideoPlay />
+              </div>
             </div>
           </div>
-          {IsVideoBox &&(
-            <div className="fixed backdrop-blur-sm  z-50 inset-0 bg-black/40  flex items-center justify-center px-4">
-          <div className="w-[800px] h-[500px] bg-white rounded-[15px] p-10">
-            <div className="w-[100%] h-[100%] overflow-hidden object-cover">
-                 <video width="100%" height="100%" controls autoPlay >
-                <source src="videos/simple.mp4" type="video/mp4" />
-              </video>
+
+          <div onClick={() => setActiveVideoSrc("videos/video2.mp4")}>
+            <div className="w-[215px] h-[100px] bg-[#24234B] rounded-[15px] flex items-center justify-center">
+              <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
+                <VideoPlay />
+              </div>
             </div>
-           
           </div>
+
+          <div onClick={() => setActiveVideoSrc("videos/simple.mp4")}>
+            <div className="w-[215px] h-[100px] bg-[#615DFA] rounded-[15px] flex items-center justify-center">
+              <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
+                <VideoPlay />
+              </div>
+            </div>
           </div>
+
+          {activeVideoSrc && (
+            <VideoPlayBox
+              videoSrc={activeVideoSrc}
+              onClose={() => setActiveVideoSrc(null)}
+            />
           )}
-        </div>
-          <div
-        onClick={hendelVideoBox}
-         className="">
-          <div className="w-[215px] h-[100px] bg-[#24234B] rounded-[15px] flex items-center justify-center">
-            <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
-              <VideoPlay />
-            </div>
-          </div>
-          {IsVideoBox &&(
-            <div className="fixed backdrop-blur-sm  z-50 inset-0 bg-black/40  flex items-center justify-center px-4">
-          <div className="w-[800px] h-[500px] bg-white rounded-[15px] p-10">
-            <div className="w-[100%] h-[100%] overflow-hidden object-cover">
-                 <video width="100%" height="100%" controls autoPlay >
-                <source src="videos/video2.mp4" type="video/mp4" />
-              </video>
-            </div>
-           
-          </div>
-          </div>
-          )}
-        </div>
-          <div
-        onClick={hendelVideoBox}
-         className="">
-          <div className="w-[215px] h-[100px] bg-[#615DFA] rounded-[15px] flex items-center justify-center">
-            <div className="w-[40px] h-[40px] rounded-full bg-black border-2 border-[#41EFFF] flex items-center justify-center">
-              <VideoPlay />
-            </div>
-          </div>
-          {IsVideoBox &&(
-            <div className="fixed backdrop-blur-sm  z-50 inset-0 bg-black/40  flex items-center justify-center px-4">
-          <div className="w-[800px] h-[500px] bg-white rounded-[15px] p-10">
-            <div className="w-[100%] h-[100%] overflow-hidden object-cover">
-                 <video width="100%" height="100%" controls autoPlay >
-                <source src="videos/simple.mp4" type="video/mp4" />
-              </video>
-            </div>
-           
-          </div>
-          </div>
-          )}
-        </div>
         </div>
       </div>
     </div>

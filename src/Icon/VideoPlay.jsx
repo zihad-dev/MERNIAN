@@ -1,11 +1,11 @@
 import React from "react";
 
-const VideoPlay = () => {
+const VideoPlay = ({width=13, height=13}) => {
   return (
     <div>
       <svg
-        width="13"
-        height="13"
+        width={width}
+        height={height}
         viewBox="0 0 13 13"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
