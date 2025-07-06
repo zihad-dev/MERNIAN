@@ -7,6 +7,7 @@ import FriendIcon from "../Icon/FriendIcon";
 import FriendsIcon from "../Icon/FriendsIcon";
 import PhotosIcon from "../Icon/PhotosIcon";
 import GroupIcon from "../Icon/GroupIcon";
+import { Link, NavLink } from "react-router";
 
 const SideLeftBer = () => {
   return (
@@ -46,36 +47,124 @@ const SideLeftBer = () => {
         </div>
         {/* ------end------- */}
         <div className="">
-          <ul className="flex flex-col gap-[5px]  ">
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0] ">
-              <FaNewspaper className="text-[#AFB0C0] group-hover:text-white text-[20px]" />
-              <span className=" group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Newsfeed</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <ProfileIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Profile</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <GroupIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Groups</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <PhotosIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Photos</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <FriendsIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className=" group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Friends</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <FriendIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Friends Request</span>
-            </li>
-            <li className="group flex items-center gap-[29px] bg-transparent pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer hover:bg-[#23D2E2] font-[semibold] text-[14px] text-[#AFB0C0]">
-              <LogOutIcon className="text-[#AFB0C0] group-hover:text-white" />
-              <span className="group-hover:text-white font-[Poppins] font-semibold text-[14px] text-[#AFB0C0]">Logout</span>
-            </li>
-          </ul>
+       <ul className="flex flex-col gap-[5px]">
+  <li>
+    <NavLink
+      to="/newsfeed"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <FaNewspaper className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">
+        Newsfeed
+      </span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/profile"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <ProfileIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Profile</span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/groups"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <GroupIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Groups</span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/photos"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <PhotosIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Photos</span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/friends"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <FriendsIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Friends</span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/friend-requests"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <FriendIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">
+        Friends Request
+      </span>
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink
+      to="/logout"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <LogOutIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Logout</span>
+    </NavLink>
+  </li>
+</ul>
+
         </div>
         {/* -----end------ */}
       </div>
