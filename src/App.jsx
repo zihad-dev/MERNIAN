@@ -5,6 +5,7 @@ import Layout from './Layout/Layout'
 import HomePage from './Pages/HomePage'
 import Store from './Pages/Store'
 import Newsfeed from './Pages/Newsfeed'
+import Friends from './Pages/Friends'
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/store" element={<Store/>} />
         <Route path="/newsfeed" element={<Newsfeed />} />
+        <Route path="/Friends" element={<Friends />} />
+
       </Route>
     </Routes>
     </>

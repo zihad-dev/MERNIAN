@@ -65,6 +65,21 @@ const SideLeftBer = () => {
       </span>
     </NavLink>
   </li>
+   <li>
+    <NavLink
+      to="/friends"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <FriendsIcon className="text-[20px]" />
+      <span className="font-[Poppins] font-semibold text-[14px]">Friends</span>
+    </NavLink>
+  </li>
 
   <li>
     <NavLink
@@ -113,23 +128,6 @@ const SideLeftBer = () => {
       <span className="font-[Poppins] font-semibold text-[14px]">Photos</span>
     </NavLink>
   </li>
-
-  <li>
-    <NavLink
-      to="/friends"
-      className={({ isActive }) =>
-        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
-          isActive
-            ? "bg-[#23D2E2] text-white"
-            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
-        }`
-      }
-    >
-      <FriendsIcon className="text-[20px]" />
-      <span className="font-[Poppins] font-semibold text-[14px]">Friends</span>
-    </NavLink>
-  </li>
-
   <li>
     <NavLink
       to="/friend-requests"

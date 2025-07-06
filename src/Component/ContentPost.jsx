@@ -14,7 +14,7 @@ import Comment from "./Comment";
 import VideoPlay from "../Icon/VideoPlay";
 import VideoPlayBox from "./VideoPlayBox";
 
-const ContentPost = ({ videoContent, Participants,photos }) => {
+const ContentPost = ({ videoContent, Participants, photos, morePhotos }) => {
   const [ispostDropdwon, SetIspostDropdwon] = useState(false);
   const [isReact, setIsReact] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState(null);
@@ -124,13 +124,14 @@ const ContentPost = ({ videoContent, Participants,photos }) => {
             </div>
           </div>
           {videoContent && (
-            <div 
-            onClick={() => setActiveVideoSrc("videos/video2.mp4")}
-            className="w-full h-[300px] mb-[15px]">
+            <div
+              onClick={() => setActiveVideoSrc("videos/video2.mp4")}
+              className="w-full h-[300px] mb-[15px]"
+            >
               <div className="w-full h-full bg-[#7A77FD] relative">
                 <div className="absolute top-[50%] left-[50%] w-[96px] h-[96px] rounded-full bg-[#181828] translate-x-[-50%] translate-y-[-50%] border-4 border-[#41EFFF] ">
                   <div className="flex items-center justify-center w-full h-full cursor-pointer">
-                    <VideoPlay width={25} height={25}/>
+                    <VideoPlay width={25} height={25} />
                   </div>
                   {/* <video className="w-full h-full object-cover rounded-full" controls>
                     <source src="video.mp4" type="video/mp4" />
@@ -149,6 +150,16 @@ const ContentPost = ({ videoContent, Participants,photos }) => {
         )}
         {photos && (
           <div className="w-full h-[300px] bg-[#7A77FD] mb-[15px] relative"></div>
+        )}
+        {morePhotos && (
+          <div className="flex flex-wrap gap-[12px] px-[20px] w-[585px]">
+            <div className="w-[265px] h-[207px] rounded-[15px] bg-[#615DFA] cursor-pointer"></div>
+            <div className="w-[265px] h-[207px] rounded-[15px] bg-[#615DFA] cursor-pointer"></div>
+            <div className="w-[265px] h-[207px] rounded-[15px] bg-[#615DFA] cursor-pointer"></div>
+            <div className="w-[265px] h-[207px] rounded-[15px] bg-[#41EFFF] flex items-center justify-center text-white font-[inter] font-normal text-[14px] cursor-pointer ">
+              <p>10+</p>
+            </div>
+          </div>
         )}
 
         <div className="flex items-center justify-between pt-[17px] pr-[42px] pb-[18px] pl-[19px]  ">
@@ -171,29 +182,22 @@ const ContentPost = ({ videoContent, Participants,photos }) => {
                     </span>
                   </div>
                   <div className="flex items-center relative">
-                    <div className="z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]">
-                      
-                    </div>
-                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]">
-                      
-                    </div>
-                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]">
-                    </div>
-                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]">
-                    </div>
+                    <div className="z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]"></div>
+                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]"></div>
+                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]"></div>
+                    <div className="-ml-2 z-1 bg-[#615DFA] w-[20px] h-[20px] rounded-full border border-[#D9D9D9]"></div>
                     <span className="font-[Inter] font-bold text-[12px] text-[#000000] ml-[12px]">
                       12 Participants
                     </span>
                   </div>
-                  
                 </div>
                 <div className="flex items-center gap-[15px]">
                   <h5 className="font-bold text-[12px] text-[#000000] cursor-pointer">
-                13 Comments
-              </h5>
-              <span className="font-bold text-[12px] text-[#000000] cursor-pointer">
-                2 Shares
-              </span>
+                    13 Comments
+                  </h5>
+                  <span className="font-bold text-[12px] text-[#000000] cursor-pointer">
+                    2 Shares
+                  </span>
                 </div>
               </div>
             </div>
