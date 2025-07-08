@@ -8,10 +8,12 @@ import FriendsIcon from "../Icon/FriendsIcon";
 import PhotosIcon from "../Icon/PhotosIcon";
 import GroupIcon from "../Icon/GroupIcon";
 import { Link, NavLink } from "react-router";
+import { FcAbout } from "react-icons/fc";
+import AboutIcon from "../Icon/AboutIcon";
 
 const SideLeftBer = () => {
   return (
-    <div className="w-[300px] h-full bg-[#ffffff]  font-[Poppins] ">
+    <div className="w-full h-full bg-[#ffffff]  font-[Poppins] ">
       <div className="relative ">
         <div className="w-full h-[75px] bg-[#45437F]  ">
           <div className="w-[120px] h-[120px] rounded-full bg-[#615DFA] border-[6px] border-white absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 shadow-md"></div>
@@ -78,6 +80,21 @@ const SideLeftBer = () => {
     >
       <FriendsIcon className="text-[20px]" />
       <span className="font-[Poppins] font-semibold text-[14px]">Friends</span>
+    </NavLink>
+  </li>
+   <li>
+    <NavLink
+      to="/About"
+      className={({ isActive }) =>
+        `group flex items-center gap-[29px] pt-[15px] pb-[14px] pl-[20px] rounded-[10px] cursor-pointer font-[semibold] text-[14px] ${
+          isActive
+            ? "bg-[#23D2E2] text-white"
+            : "text-[#AFB0C0] hover:bg-[#23D2E2] hover:text-white"
+        }`
+      }
+    >
+      <AboutIcon className="text-[20px]"/> 
+      <span className="font-[Poppins] font-semibold text-[14px]">About</span>
     </NavLink>
   </li>
 

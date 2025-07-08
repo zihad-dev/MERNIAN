@@ -3,7 +3,7 @@ import { FaFacebookSquare, FaInstagram, FaTwitter, FaYoutube } from "react-icons
 
 const Findfrirnd = () => {
   return (
-    <div className="w-[285px] h-auto bg-white rounded-[15px]">
+    <div className="max-w-[285px] h-auto bg-white rounded-[15px]">
       <div className="relative mb-[50px]">
         <div className="w-full h-[85px] bg-[#45437F] rounded-t-[15px]"></div>
         <div className="w-[75px] h-[75px] rounded-full bg-[#615DFA] border-4 border-white absolute bottom-[-38px] left-[50%] translate-x-[-50%]"></div>
